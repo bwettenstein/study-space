@@ -1,1 +1,14 @@
 /* Store utility classes here */
+
+.grid-element {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Used by the footer elements */
+.flex-container-bot {
+  display: flex;
+  align-items: center;
+}
