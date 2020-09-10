@@ -21,16 +21,15 @@ body {
   border: solid;
   position: relative;
 }
-
-.container::before {
+/* .container::before {
   position: absolute;
   content: '';
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  /* background: url('https://picsum.photos/1920/1080/?blur=1') no-repeat center
-    center/cover; */
+  background: url('https://picsum.photos/1920/1080/?blur=1') no-repeat center
+    center/cover;
 
   background: url('https://source.unsplash.com/random/?dark') no-repeat center
     center/cover;
@@ -38,6 +37,21 @@ body {
   z-index: -1;
   filter: brightness(80%);
   opacity: 0.9;
+  background-color: #333;
+} */
+
+.container .image-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  z-index: -1;
+  filter: brightness(80%);
+  opacity: 0.85;
   background-color: #333;
 }
 
