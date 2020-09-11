@@ -9,6 +9,8 @@
 :root {
   --white-text: #fff;
   --dark-grey-task: #333;
+  --footer-elem-black: rgba(15, 15, 15, 0.925);
+  --border-radius: 20px;
 }
 
 body {
@@ -89,7 +91,7 @@ footer {
   width: 400px;
   max-height: 350px;
   max-width: 450px;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   padding: 0.5rem;
   background: slategrey;
   border: solid slategrey 5px;
@@ -110,6 +112,8 @@ footer {
   grid-column: 1 / span 2;
 }
 
+/* Begin footer styling */
+
 .container .app-container footer {
   display: flex;
   flex-direction: row;
@@ -117,37 +121,93 @@ footer {
   align-items: center;
   text-align: center;
   padding: 0 1rem;
+  height: 20vh;
+  max-height: unset;
 }
 
-.container .app-container footer .task-container {
+.container .app-container footer .tasks {
   height: 100%;
   width: 20vw;
   justify-content: flex-end;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
-.container .app-container footer .task-container .task-toggle {
+.container .app-container footer .tasks .task-toggle {
   color: var(--white-text);
   font-weight: 400;
   font-size: 1.5rem;
   cursor: pointer;
   transition: all 0.5s ease;
 }
-.container .app-container footer .task-container .task-toggle:hover {
+.container .app-container footer .tasks .task-toggle:hover {
   transform: scale(1.25);
   letter-spacing: 2px;
   filter: brightness(80%);
 }
 
-.container .app-container footer .task-toggle .active {
+/* By default, the tasks-container is hidden until the user clicks on the 'task' header  */
+.container .app-container footer .tasks-container {
+  min-height: 10vh;
   height: auto;
-  width: 350px;
-  background: #333;
+  width: 100%;
+  padding: 1rem;
+  opacity: 0.9;
+  border-radius: var(--border-radius);
+  background: var(--footer-elem-black);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  display: none;
+}
+
+.container .app-container footer .active {
+  display: flex;
+  animation: tasks-container 0.5s ease-in-out;
+}
+
+@keyframes tasks-container {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+.container .app-container footer .tasks-container ul,
+.container .app-container footer .tasks-container ul li {
+  list-style: none;
+}
+
+.container .app-container footer .tasks-container ul li input[type='text'] {
+  width: 100%;
+  padding-left: 0.5rem;
+  height: 25px;
+  border: solid 1px var(--white-text);
+  color: var(--white-text);
+  background: transparent;
+  overflow: scroll;
+  /* border: none; */
+}
+
+.container .app-container footer .tasks-container ul li input:focus {
+  outline: none;
+}
+
+.container .app-container footer .tasks-container h4 {
+  color: var(--white-text);
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
 }
 
 .container .app-container footer .settings-container {
   height: 100%;
   width: 20vw;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
 .container .app-container footer .settings-container .settings-icon {

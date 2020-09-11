@@ -4,6 +4,7 @@ const Ui = (function () {
     centerContent: '.center-content',
     youtubeStream: '.youtube-stream',
     taskToggle: '.task-toggle',
+    tasksContainer: '.tasks-container',
     settingsIcon: '.settings-icon',
   };
 
