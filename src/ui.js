@@ -1,10 +1,16 @@
+import { Tasks } from './Tasks.js';
+import { AppCtrl } from './AppCtrl.js';
+
 const Ui = (function () {
   const selectors = {
     imageContainer: '.image-container',
     centerContent: '.center-content',
     youtubeStream: '.youtube-stream',
     taskToggle: '.task-toggle',
+    taskList: '.task-list',
+    taskInput: '.task-input',
     tasksContainer: '.tasks-container',
+    flexTask: '.flex-task',
     settingsIcon: '.settings-icon',
   };
 
@@ -15,8 +21,10 @@ const Ui = (function () {
     'water',
     'neon',
     'astronomy',
-    'forest',
+    // 'forest',
     'dark',
+    // 'grey',
+    'cyberpunk',
   ];
   return {
     getSelectors: function () {
@@ -37,12 +45,59 @@ const Ui = (function () {
     changeBackground: function () {
       const selectors = Ui.getSelectors();
       const searchTerm = Ui.getRandomSearchTerms();
-      const url = 'https://source.unsplash.com/random/';
-      const backgroundImgUrl = `${url}?${searchTerm}`;
+      // const url = 'https://source.unsplash.com/random/';
+      const url = 'https://source.unsplash.com/';
+      const backgroundImgUrl = `${url}1920x1080/?${searchTerm}/`;
       const imgContainer = document.querySelector(selectors.imageContainer);
       imgContainer.style.background = `url(${backgroundImgUrl}) no-repeat center center/cover`;
 
       console.log(backgroundImgUrl);
+    },
+    // Adds tasks to the taskList ui element
+    addTasksToUi: function () {
+      const taskList = document.querySelector(selectors.taskList);
+      const currentTaskList = Tasks.getTaskList();
+      let output;
+
+      currentTaskList.forEach((task, index) => {
+        output = `
+          <input type="checkbox" name="Task">
+          <h3 class="task-title">${task}</h3>
+        `;
+        let li = document.createElement('li');
+        li.className = 'flex-task';
+        li.id = `task${index + 1}`;
+        li.innerHTML = output;
+
+        taskList.insertBefore(li, taskList.lastChild);
+        console.log('i think it');
+      });
+    },
+    // Adds the text input to enter a task to the task-list element in the DOM
+    // This should always be the last child in the task-list
+    insertTaskInputToUi: function () {
+      Ui.clearTaskUi();
+
+      const selectors = Ui.getSelectors();
+      const taskList = document.querySelector(selectors.taskList);
+
+      const li = document.createElement('li');
+      li.className = 'task-input-container flex-task';
+      const textInput = document.createElement('input');
+      textInput.type = 'text';
+      textInput.name = 'Task';
+      textInput.className = 'task-input';
+      textInput.placeholder = 'Add a task....';
+
+      li.append(textInput);
+
+      taskList.insertAdjacentElement('beforeend', li);
+      AppCtrl.loadTaskInputEventListener();
+    },
+    clearTaskUi: function () {
+      const selectors = Ui.getSelectors();
+      const taskList = document.querySelector(selectors.taskList);
+      taskList.innerHTML = '';
     },
   };
 })();

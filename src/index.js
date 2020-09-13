@@ -1,6 +1,5 @@
 import { Ui } from './Ui.js';
 import { AppCtrl } from './AppCtrl.js';
-
-Ui.changeBackground();
+import { Tasks } from './Tasks.js';
 
 AppCtrl.init();
