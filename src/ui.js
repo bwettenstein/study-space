@@ -88,11 +88,11 @@ const Ui = (function () {
       textInput.name = 'Task';
       textInput.className = 'task-input';
       textInput.placeholder = 'Add a task....';
+      textInput.id = 'taskInput';
 
       li.append(textInput);
 
       taskList.insertAdjacentElement('beforeend', li);
-      AppCtrl.loadTaskInputEventListener();
     },
     clearTaskUi: function () {
       const selectors = Ui.getSelectors();
