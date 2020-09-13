@@ -12,3 +12,22 @@
   display: flex;
   align-items: center;
 }
+
+.flex-task {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  text-align: left;
+  padding: 5px 0 3px;
+
+  /* align-items: center; */
+  /* text-align: center; */
+  /* flex-wrap: wrap; */
+}
+
+.grid-task {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  align-items: baselind;
+  justify-content: left;
+}

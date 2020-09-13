@@ -1,6 +1,8 @@
 import { Tasks } from './Tasks.js';
 import { AppCtrl } from './AppCtrl.js';
 
+// Handles the Ui itself, such as creating DOM elements and adding tasks to the Ui.
+
 const Ui = (function () {
   const selectors = {
     imageContainer: '.image-container',
@@ -10,6 +12,7 @@ const Ui = (function () {
     taskList: '.task-list',
     taskInput: '.task-input',
     tasksContainer: '.tasks-container',
+    taskIcon: '.task-icon',
     flexTask: '.flex-task',
     settingsIcon: '.settings-icon',
   };
@@ -23,8 +26,12 @@ const Ui = (function () {
     'astronomy',
     // 'forest',
     'dark',
-    // 'grey',
+    'dark/wallpaper',
+    'lo-fi',
+    'lofi',
+    'grey/wallpaper',
     'cyberpunk',
+    'cyberpunk/wallpaper',
   ];
   return {
     getSelectors: function () {
@@ -45,7 +52,6 @@ const Ui = (function () {
     changeBackground: function () {
       const selectors = Ui.getSelectors();
       const searchTerm = Ui.getRandomSearchTerms();
-      // const url = 'https://source.unsplash.com/random/';
       const url = 'https://source.unsplash.com/';
       const backgroundImgUrl = `${url}1920x1080/?${searchTerm}/`;
       const imgContainer = document.querySelector(selectors.imageContainer);
@@ -63,10 +69,14 @@ const Ui = (function () {
         output = `
           <input type="checkbox" name="Task">
           <h3 class="task-title">${task}</h3>
+          <i class="task-icon far fa-edit" id="editTaskIcon"></i>
+          <i class="task-icon far fa-trash-alt" id="deleteTaskIcon"></i>
         `;
+        // <i class="task-settings-icon fas fa-ellipsis-h"></i>
+
         let li = document.createElement('li');
         li.className = 'flex-task';
-        li.id = `task${index + 1}`;
+        li.id = `task-${index + 1}`;
         li.innerHTML = output;
 
         taskList.insertBefore(li, taskList.lastChild);

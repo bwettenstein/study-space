@@ -7,40 +7,34 @@
 }
 
 :root {
-  --white-text: #fff;
+  --white: #fff;
   --dark-grey-task: #333;
   --footer-elem-black: rgba(15, 15, 15, 0.925);
   --border-radius: 20px;
 }
 
 body {
-  /* background: url("https://picsum.photos/1920/1080"); */
   overflow: hidden;
 }
+
+/* BEGIN Prevent highlighting of elements on double click */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+path {
+  pointer-events: none;
+}
+/* END */
 
 .container {
   height: 100vh;
   border: solid;
   position: relative;
 }
-/* .container::before {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: url('https://picsum.photos/1920/1080/?blur=1') no-repeat center
-    center/cover;
-
-  background: url('https://source.unsplash.com/random/?dark') no-repeat center
-    center/cover;
-
-  z-index: -1;
-  filter: brightness(80%);
-  opacity: 0.9;
-  background-color: #333;
-} */
 
 .container .image-container {
   position: absolute;
@@ -52,8 +46,8 @@ body {
   width: 100%;
 
   z-index: -1;
-  filter: brightness(80%);
-  opacity: 0.85;
+  filter: brightness(75%);
+  opacity: 0.9;
   background-color: #333;
 }
 
@@ -63,11 +57,26 @@ body {
   flex-direction: column;
 }
 
+.container .image-container,
+.container .app-container {
+  animation: load-container 1.2s ease-in-out;
+}
+
+/* Delete this if it looks too tacky */
+@keyframes load-container {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .container .app-container header,
-footer {
-  height: 10vh;
-  max-height: 10vh;
-  border: solid;
+.container .app-container footer {
+  height: auto;
+  max-height: 1300px;
+  /* border: solid; */
 }
 
 .container .app-container .center-content {
@@ -105,7 +114,7 @@ footer {
 }
 
 .container .app-container .center-content h3 {
-  color: var(--white-text);
+  color: var(--white);
   font-size: 3.5rem;
   font-weight: 700;
   letter-spacing: 5px;
@@ -122,7 +131,12 @@ footer {
   text-align: center;
   padding: 0 1rem;
   height: 20vh;
-  max-height: unset;
+  min-height: 10vh;
+}
+
+.container .app-container footer .tasks,
+.container .app-container footer .settings-container {
+  padding-bottom: 1.2rem;
 }
 
 .container .app-container footer .tasks {
@@ -130,11 +144,10 @@ footer {
   width: 20vw;
   justify-content: flex-end;
   flex-direction: column;
-  margin-bottom: 1rem;
 }
 
 .container .app-container footer .tasks .task-toggle {
-  color: var(--white-text);
+  color: var(--white);
   font-weight: 400;
   font-size: 1.5rem;
   cursor: pointer;
@@ -148,10 +161,12 @@ footer {
 
 /* By default, the tasks-container is hidden until the user clicks on the 'task' header  */
 .container .app-container footer .tasks-container {
-  min-height: 10vh;
   height: auto;
-  width: 100%;
+  max-height: 1300px;
+  max-width: 1860px;
+  min-width: 200px;
   padding: 1rem;
+  margin-right: 1rem;
   opacity: 0.9;
   border-radius: var(--border-radius);
   background: var(--footer-elem-black);
@@ -159,11 +174,14 @@ footer {
   justify-content: center;
   text-align: center;
   display: none;
+  /* min-height: 10vh; */
+  /* overflow: auto; */
 }
 
 .container .app-container footer .active {
   display: flex;
-  animation: tasks-container 0.5s ease-in-out;
+  animation: tasks-container 0.2s ease-in-out;
+  padding: 21px;
 }
 
 @keyframes tasks-container {
@@ -175,28 +193,57 @@ footer {
   }
 }
 
+.container .app-container footer .tasks-container ul {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .container .app-container footer .tasks-container ul,
 .container .app-container footer .tasks-container ul li {
   list-style: none;
 }
 
+.container .app-container footer .tasks-container ul li .task-icon {
+  color: var(--white);
+  margin: 0 3px;
+  opacity: 0;
+}
+
+.container .app-container footer .tasks-container ul li:hover .task-icon {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .container .app-container footer .tasks-container ul li input[type='text'] {
   width: 100%;
   padding-left: 0.5rem;
+  /* padding: 7px 21px 18px 21px; */
+  /* padding: 7px 10px 10px 5px; */
   height: 25px;
-  border: solid 1px var(--white-text);
-  color: var(--white-text);
+  border: solid 1px var(--white);
+  color: var(--white);
   background: transparent;
-  overflow: scroll;
   /* border: none; */
+}
+
+.container .app-container footer .tasks-container ul li .task-title {
+  margin-left: 0.5rem;
+  font-weight: 300;
+  color: var(--white);
 }
 
 .container .app-container footer .tasks-container ul li input:focus {
   outline: none;
 }
 
+/* .container .app-container footer .tasks-container ul .task-input-container {
+  padding: 7px 21px 18px 21px;
+} */
+
+/* 7px 21px 18px 21px; */
+
 .container .app-container footer .tasks-container h4 {
-  color: var(--white-text);
+  color: var(--white);
   font-weight: 300;
   font-size: 1.2rem;
   margin-top: 0.5rem;
@@ -207,12 +254,12 @@ footer {
   width: 20vw;
   justify-content: flex-end;
   flex-direction: column;
-  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .container .app-container footer .settings-container .settings-icon {
   transition: all 0.5s ease;
-  color: var(--white-text);
+  color: var(--white);
   cursor: pointer;
   height: 1.5rem;
   width: 1.5rem;

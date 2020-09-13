@@ -54,11 +54,19 @@
           <div class="tasks flex-container-bot">
             <div class="tasks-container flex-container-bot">
               <h4>Current Tasks</h4>
-              <ul>
-                <li>Test</li>
-                <li>
-                  <input type="text" name="Task" placeholder="Task..." />
+              <ul class="task-list">
+                <li class="flex-task">
+                  <input type="checkbox" name="Task" />
+                  <h3 class="task-title">Task</h3>
                 </li>
+                <!-- <li class="flex-task">
+                  <input
+                    type="text"
+                    name="Task"
+                    class="task-input"
+                    placeholder="Add a task..."
+                  />
+                </li> -->
               </ul>
             </div>
             <h4 class="task-toggle">Tasks</h4>
