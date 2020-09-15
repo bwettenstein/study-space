@@ -3,10 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
-      rel="stylesheet"
-    /> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap"
       rel="stylesheet"
@@ -26,31 +22,30 @@
     <div class="container">
       <div class="image-container"></div>
       <div class="app-container">
+        <!-- Header elements here, currently deciding what to put here-->
         <header></header>
+        <!-- Center content here, the titles and the center media -->
         <div class="center-content">
           <h3 class="grid-element">Lets get to work</h3>
           <div class="center-media grid-element">
             <iframe
               class="youtube-stream"
               src="https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0"
-              frameborder="0"
+              frameborder="no"
               allow="autoplay; encrypted-media"
               allowfullscreen
             ></iframe>
-            <!-- <iframe class="soundcloud-stream"
-              width="100%"
-              height="300"
-              scrolling="no"
-              frameborder="no"
-              allow="autoplay"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1040356177&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-            ></iframe> -->
           </div>
         </div>
+        <!-- End Center Content -->
+        <!-- Begin footer elements here -->
         <footer>
+          <!-- Settings container here, opacity is currently 0 for this element until I decide what elements to add for settings -->
           <div class="settings-container flex-container-bot">
             <i class="fas fa-cog settings-icon"></i>
           </div>
+          <!-- End settings container -->
+          <!-- Task elements begin here -->
           <div class="tasks flex-container-bot">
             <div class="tasks-container flex-container-bot">
               <div class="tasks-container-top">
@@ -65,19 +60,13 @@
                   <input type="checkbox" name="Task" />
                   <h3 class="task-title">Task</h3>
                 </li>
-                <!-- <li class="flex-task">
-                  <input
-                    type="text"
-                    name="Task"
-                    class="task-input"
-                    placeholder="Add a task..."
-                  />
-                </li> -->
               </ul>
             </div>
             <h4 class="task-toggle">Tasks</h4>
           </div>
+          <!-- End task elements -->
         </footer>
+        <!-- End footer elements -->
       </div>
     </div>
   </body>

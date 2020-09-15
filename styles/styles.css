@@ -294,6 +294,8 @@ path {
   cursor: pointer;
   height: 1.5rem;
   width: 1.5rem;
+  /* Until I figure out what to put in settings, hide it */
+  opacity: 0;
 }
 
 .container .app-container footer .settings-container .settings-icon:hover {
@@ -312,8 +314,8 @@ path {
     text-align: center;
   }
 
-  .container .app-container .center-content .center-media {
-  }
+  /* .container .app-container .center-content .center-media {
+  } */
 
   .container .app-container .center-content .center-media .youtube-stream {
     height: 220px;
