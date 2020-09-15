@@ -1,5 +1,4 @@
 import { Tasks } from './Tasks.js';
-import { AppCtrl } from './AppCtrl.js';
 
 // Handles the Ui itself, such as creating DOM elements and adding tasks to the Ui.
 
@@ -13,6 +12,7 @@ const Ui = (function () {
     taskInput: '.task-input',
     tasksContainer: '.tasks-container',
     taskIcon: '.task-icon',
+    taskTitle: '.task-title',
     flexTask: '.flex-task',
     settingsIcon: '.settings-icon',
   };

@@ -25,29 +25,36 @@ const AppCtrl = (function () {
       //   each time the task input field is added after its cleared.
       tasksContainer.addEventListener('keyup', function (e) {
         if (e.target.id === 'taskInput' && e.keyCode === 13) {
-          Tasks.addToTaskList(taskInput.value);
-          Ui.clearTaskUi();
-          Ui.insertTaskInputToUi();
-          Ui.addTasksToUi();
+          if (taskInput.value.length > 0 && taskInput.value !== ' ') {
+            Tasks.addToTaskList(taskInput.value);
+            Ui.clearTaskUi();
+            Ui.insertTaskInputToUi();
+            Ui.addTasksToUi();
+          }
         }
       });
 
       tasksContainer.addEventListener('click', function (e) {
-        if (e.target.id === 'deleteTaskIcon') {
-          const taskId = e.target.parentElement.id;
-          Tasks.removeFromTaskList(taskId);
+        if (e.target.id === 'deleteAllTasksIcon') {
+          Tasks.clearTaskList();
+          Ui.clearTaskUi();
+          Ui.insertTaskInputToUi();
+          Ui.addTasksToUi();
+        } else if (e.target.id === 'deleteTaskIcon') {
+          const taskToDelete = e.target.parentElement.querySelector(
+            selectors.taskTitle
+          ).innerHTML;
+
+          Tasks.removeFromTaskList(taskToDelete);
           Ui.clearTaskUi();
           Ui.insertTaskInputToUi();
           Ui.addTasksToUi();
         } else {
-          // Add event listener for if edit icon is true
-          console.log('failed, ', e.target);
         }
       });
     },
     init: function () {
       AppCtrl.loadEventListeners();
-      Tasks.addToTaskList('finish homework');
       Ui.insertTaskInputToUi();
       Ui.addTasksToUi();
       Ui.changeBackground();

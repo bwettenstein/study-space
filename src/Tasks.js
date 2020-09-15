@@ -1,27 +1,46 @@
-// Handles all the methods involving the adding, removing, and editing of tasks.
 const Tasks = (function () {
-  const taskList = ['do homework rnnnnn'];
-
   return {
     getTaskList: function () {
-      return taskList;
+      let tasks;
+      if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+      } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+      }
+      return tasks;
     },
     addToTaskList: function (task) {
-      const currentTaskList = Tasks.getTaskList();
-      currentTaskList.push(task);
-      console.log(currentTaskList, 'successfully added');
+      let tasks;
+
+      // If localStorage is empty, create an array and add the new item to it
+      if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+
+        tasks.push(task);
+
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+      } else {
+        // Get what's in local storage
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+        tasks.push(task);
+
+        // Re sets localStorage
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+      }
     },
-    removeFromTaskList: function (taskId) {
-      // Task id is gonna be passed as 'task-number_here', so split it based off the hyphen
-      let taskIndex = taskId.split('-')[1];
-      // The id number is the index + 1 of the task in the task list, so subtract by 1 in order to get the accurate index
-      taskIndex -= 1;
-      const taskList = Tasks.getTaskList();
-      taskList.splice(taskIndex, 1);
+    removeFromTaskList: function (taskToDelete) {
+      let tasks = JSON.parse(localStorage.getItem('tasks'));
+
+      tasks.forEach(function (task, index) {
+        if (taskToDelete === task) {
+          tasks.splice(index, 1);
+        }
+      });
+      //Reset local storage
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     },
     clearTaskList: function () {
-      const taskList = Tasks.getTaskList();
-      taskList.length = 0;
+      localStorage.removeItem('tasks');
     },
   };
 })();

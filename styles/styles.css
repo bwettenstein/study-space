@@ -220,14 +220,16 @@ path {
   /* padding: 7px 21px 18px 21px; */
   /* padding: 7px 10px 10px 5px; */
   height: 25px;
-  border: solid 1px var(--white);
+  font-size: 1rem;
+  /* border: solid 1px var(--white); */
   color: var(--white);
   background: transparent;
-  /* border: none; */
+  border: none;
 }
 
 .container .app-container footer .tasks-container ul li .task-title {
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
+  margin: 0 0.5rem;
   font-weight: 300;
   color: var(--white);
 }
@@ -242,7 +244,36 @@ path {
 
 /* 7px 21px 18px 21px; */
 
-.container .app-container footer .tasks-container h4 {
+.container .app-container footer .tasks-container .tasks-container-top {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  text-align: left;
+  justify-content: left;
+}
+
+.container
+  .app-container
+  footer
+  .tasks-container
+  .tasks-container-top
+  .task-icon {
+  color: var(--white);
+  cursor: pointer;
+  margin: 0 0.5rem;
+  opacity: 0;
+}
+
+.container
+  .app-container
+  footer
+  .tasks-container
+  .tasks-container-top:hover
+  .task-icon {
+  opacity: 1;
+}
+
+.container .app-container footer .tasks-container .tasks-container-top h4 {
   color: var(--white);
   font-weight: 300;
   font-size: 1.2rem;
