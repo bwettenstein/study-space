@@ -96,21 +96,25 @@ path {
 }
 
 .container .app-container .center-content .center-media .youtube-stream {
-  height: 300px;
-  width: 400px;
-  max-height: 350px;
-  max-width: 450px;
+  /* height: 300px;
+  width: 400px; */
+  /* max-height: 350px;
+  max-width: 450px; */
   border-radius: var(--border-radius);
   padding: 0.5rem;
   background: slategrey;
   border: solid slategrey 5px;
+  height: 450px;
+  width: 550px;
 
   transition: all 0.5s ease-in;
 }
 
 .container .app-container .center-content .center-media .youtube-stream:hover {
-  height: 350px;
-  width: 450px;
+  /* height: 350px;
+  width: 450px; */
+  height: 500px;
+  width: 580px;
 }
 
 .container .app-container .center-content h3 {
@@ -316,21 +320,6 @@ path {
 
   /* .container .app-container .center-content .center-media {
   } */
-
-  .container .app-container .center-content .center-media .youtube-stream {
-    height: 220px;
-    width: 200px;
-
-    max-height: 250px;
-    max-width: 200px;
-
-    transition: all 1s ease;
-    /* src: url('https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0'); */
-    /* border-radius: 20px;
-    padding: 0.5rem;
-    background: slategrey;
-    border: solid slategrey 1px; */
-  }
 
   .container .app-container .center-content h3 {
     color: #fff;
