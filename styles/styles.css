@@ -111,10 +111,7 @@ path {
 }
 
 .container .app-container .center-content .center-media .youtube-stream:hover {
-  /* height: 350px;
-  width: 450px; */
-  height: 500px;
-  width: 580px;
+  transform: scale(1.2);
 }
 
 .container .app-container .center-content h3 {
