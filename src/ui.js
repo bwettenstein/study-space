@@ -69,10 +69,10 @@ const Ui = (function () {
         output = `
           <input type="checkbox" name="Task">
           <h3 class="task-title">${task}</h3>
-          <i class="task-icon far fa-edit" id="editTaskIcon"></i>
           <i class="task-icon far fa-trash-alt" id="deleteTaskIcon"></i>
         `;
         // <i class="task-settings-icon fas fa-ellipsis-h"></i>
+        // <i class="task-icon far fa-edit" id="editTaskIcon"></i>
 
         let li = document.createElement('li');
         li.className = 'flex-task';
